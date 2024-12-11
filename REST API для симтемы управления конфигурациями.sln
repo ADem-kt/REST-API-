@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "REST API для симтемы управления конфигурациями", "REST API для симтемы управления конфигурациями\REST API для симтемы управления конфигурациями.csproj", "{FD29F2E3-0651-4959-82F3-E5C6E9548773}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "REST API для симтемы управления конфигурациями.Tests", "REST API для симтемы управления конфигурациями.Tests\REST API для симтемы управления конфигурациями.Tests.csproj", "{9F07D5DC-30DA-4645-9311-FB266207EBA8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FD29F2E3-0651-4959-82F3-E5C6E9548773} = {FD29F2E3-0651-4959-82F3-E5C6E9548773}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FD29F2E3-0651-4959-82F3-E5C6E9548773}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD29F2E3-0651-4959-82F3-E5C6E9548773}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD29F2E3-0651-4959-82F3-E5C6E9548773}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD29F2E3-0651-4959-82F3-E5C6E9548773}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F07D5DC-30DA-4645-9311-FB266207EBA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F07D5DC-30DA-4645-9311-FB266207EBA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F07D5DC-30DA-4645-9311-FB266207EBA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F07D5DC-30DA-4645-9311-FB266207EBA8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6FF12508-CB87-4742-ABC4-7CC3C20C4F04}
+	EndGlobalSection
+EndGlobal
