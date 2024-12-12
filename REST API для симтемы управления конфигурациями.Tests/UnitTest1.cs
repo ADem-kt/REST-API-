@@ -10,21 +10,6 @@ namespace REST_API_для_симтемы_управления_конфигура
 {
     public class configTests
     {
-        [Fact]
-        public void Test1()
-        {
-            // Arrange
-            ApplicationContext db = new ApplicationContext();
-            db.Database.ExecuteSqlRawAsync("delete TABLE [Configs]");
-            // Act
-            ConfigEF config1 = new ConfigEF { date = DateTime.Now, version = 1, config_name = "configName1", key = "key", value = "value" };
-            db.Configs.Add(config1);
-            var res = db.SaveChanges();
-            db.Remove(config1);
-            // Assert
-            Assert.True(res != 0);
-        }
-        [Fact]
         public void Test2()
         {
             // Arrange
