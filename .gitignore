@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/REST API для симтемы управления конфигурациями/helloapp.db
+/REST API для симтемы управления конфигурациями/helloapp.db-shm
+/REST API для симтемы управления конфигурациями/helloapp.db-wal
