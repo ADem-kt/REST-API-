@@ -22,8 +22,8 @@ namespace REST_API_для_симтемы_управления_конфигура
                 var Configs = db.Configs.ToList();
                 foreach (ConfigEF u in Configs)
                 {
-                    if (u.config_name.ToString().Contains(s ?? "") && u.date >= (dateTime ?? DateTime.Parse("01.01.1900")))
-                        stringBuilder.AppendLine($"{u.row_id} {u.date} {u.version} {u.config_name} {u.key} {u.value}");
+                    if (u.user_name.ToString().Contains(s ?? "") && u.date >= (dateTime ?? DateTime.Parse("01.01.1900")))
+                        stringBuilder.AppendLine($"{u.row_id} {u.date} {u.version} {u.user_name} {u.key} {u.value}");
                 }
             }
             // Assert

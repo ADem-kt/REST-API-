@@ -10,18 +10,12 @@ namespace REST_API_для_симтемы_управления_конфигура
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
-            // Add services to the container
             builder.Services.AddSignalR();      // подключема сервисы SignalR.
-
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
-
-             //Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
@@ -30,34 +24,27 @@ namespace REST_API_для_симтемы_управления_конфигура
             app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseHttpsRedirection();
-
             app.UseAuthorization();
-
-            app.MapPost("/create", async (int version, string configName, string key, string value,  IHubContext<ChatHub> hubContext) =>
-            {
-                try
-                {
-                    using (ApplicationContext db = new ApplicationContext())
-                    {
-                        ConfigEF config1 = new ConfigEF { date = DateTime.Now, version = version, config_name = configName, key = key, value = value };
-                        db.Configs.Add(config1);
-                        db.SaveChanges();
-                        await hubContext.Clients.All.SendAsync("Receive", $"Добавили строку в конфиг: date = {DateTime.Now}, version = {version}, config_name = {configName}, key = {key}, value = {value}");
-                        return $"Добавили строку в конфиг: date = {DateTime.Now}, version = {version}, config_name = {configName}, key = {key}, value = {value}";
-                    }
-                }
-                catch (Exception ex) { 
-                    await hubContext.Clients.All.SendAsync("Receive", $"ERROR: {ex} - {DateTime.Now.ToLongTimeString()}");  
-                    return ex.ToString(); }
-            });
+            //app.MapPost("/create", async (int version, string configName, string key, string value,  IHubContext<ChatHub> hubContext) =>
+            //{
+            //    try
+            //    {
+            //        using (ApplicationContext db = new ApplicationContext())
+            //        {
+            //            ConfigEF config1 = new ConfigEF { date = DateTime.Now, version = version, user_name = configName, key = key, value = value };
+            //            db.Configs.Add(config1);
+            //            db.SaveChanges();
+            //            await hubContext.Clients.All.SendAsync("Receive", $"Добавили строку в конфиг: date = {DateTime.Now}, version = {version}, config_name = {configName}, key = {key}, value = {value}");
+            //            return $"Добавили строку в конфиг: date = {DateTime.Now}, version = {version}, config_name = {configName}, key = {key}, value = {value}";
+            //        }
+            //    }
+            //    catch (Exception ex) { 
+            //        await hubContext.Clients.All.SendAsync("Receive", $"ERROR: {ex} - {DateTime.Now.ToLongTimeString()}");  
+            //        return ex.ToString(); }
+            //});
             app.MapHub<ChatHub>("/chat");   // ChatHub будет обрабатывать запросы по пути /chat
             app.MapGet("/", () => "Hello World!");
-            
-
             app.MapControllers();
-
-            
-
             app.Run();
             
     }

@@ -6,8 +6,9 @@ namespace REST_API_для_симтемы_управления_конфигура
     {
         public int row_id { get; set; }
         public DateTime date { get; set; }
-        public int version { get; set; }
+        public string user_name { get; set; }
         public string config_name { get; set; }
+        public int version { get; set; }
         public string key { get; set; }
         public string value { get; set; }
     }
@@ -18,16 +19,15 @@ namespace REST_API_для_симтемы_управления_конфигура
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ConfigEF>()
-            .HasIndex(p => new { p.config_name, p.key }).IsUnique();
+            .HasIndex(p => new { p.user_name, p.config_name, p.version }).IsUnique();
 
             modelBuilder.Entity<ConfigEF>()
             .Property(e => e.row_id)
             .ValueGeneratedOnAdd();
 
             modelBuilder.Entity<ConfigEF>()
-    .HasKey(t => t.row_id);
+            .HasKey(t => t.row_id);
         }
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite("Data Source=helloapp.db");
