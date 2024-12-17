@@ -52,7 +52,7 @@ namespace REST_API_для_симтемы_управления_конфигура
 
         }
         [HttpGet(Name = "GetConfig")]
-        public IActionResult GetConfig(string? config_name, DateTime? dateTime)
+        public IActionResult GetConfig(string? config_name, DateTime? dateTime, bool fromDateTimeToUp=true)
         {
             try
             {
@@ -62,10 +62,16 @@ namespace REST_API_для_симтемы_управления_конфигура
                     StringBuilder mes = new StringBuilder();
                     foreach (ConfigEF config in configs)
                     {
-                        if (config.config_name.ToString().Contains(config_name ?? "") && config.date >= (dateTime ?? DateTime.Parse("01.01.1900")))
+                        if (config.config_name.ToString().Contains(config_name ?? "") && 
+                            ((config.date >= (dateTime ?? DateTime.Parse("01.01.1900")) && fromDateTimeToUp)|| (config.date <= (dateTime ?? DateTime.Now) && !fromDateTimeToUp)))
                             mes.AppendLine($"{JsonSerializer.Serialize(config)}");
                     }
-                    return StatusCode(200, mes.ToString()); 
+                    if (!string.IsNullOrEmpty(mes.ToString()))
+                        return StatusCode(200, mes.ToString());
+                    else
+                    {
+                        return StatusCode(400, "По заданным параметрам конфигураций не найдено. Прошу изменить параментры и повторить запрос");
+                    }
                 }
             }
             catch (Exception ex) { return StatusCode(500, ex.Message); }
