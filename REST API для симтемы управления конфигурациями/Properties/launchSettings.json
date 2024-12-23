@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "REST_API_для_симтемы_управления_конфигурациями": {
+    "REST_API_config_control": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

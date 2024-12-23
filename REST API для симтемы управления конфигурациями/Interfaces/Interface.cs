@@ -1,4 +1,4 @@
-﻿namespace REST_API_для_симтемы_управления_конфигурациями.Interfaces
+﻿namespace REST_API_config_control.Interfaces
 {
     public interface ISendNotify
     {

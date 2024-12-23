@@ -1,4 +1,4 @@
-﻿namespace REST_API_для_симтемы_управления_конфигурациями
+﻿namespace REST_API_config_control
 {
     static public class SubscribeType
     {

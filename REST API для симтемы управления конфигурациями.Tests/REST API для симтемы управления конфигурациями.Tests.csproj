@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>REST_API_для_симтемы_управления_конфигурациями.Tests</RootNamespace>
+    <RootNamespace>REST_API_config_control.Tests</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 
@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\REST API для симтемы управления конфигурациями\REST API для симтемы управления конфигурациями.csproj" />
+    <ProjectReference Include="..\REST API для симтемы управления конфигурациями\REST API config control.csproj" />
   </ItemGroup>
 
   <ItemGroup>

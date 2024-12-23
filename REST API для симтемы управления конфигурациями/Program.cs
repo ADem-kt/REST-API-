@@ -3,14 +3,14 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Data.Sqlite;
-using REST_API_для_симтемы_управления_конфигурациями.Interfaces;
+using REST_API_config_control.Interfaces;
 using SignalRApp;
 using System;
 using System.Data;
 using System.Security.Claims;
-using REST_API_для_симтемы_управления_конфигурациями.Methods;
+using REST_API_config_control.Methods;
 
-namespace REST_API_для_симтемы_управления_конфигурациями
+namespace REST_API_config_control
 {
     public class Program
     {
@@ -18,7 +18,7 @@ namespace REST_API_для_симтемы_управления_конфигура
         //public Program(ISendNotify? SendNotify) => this.SendNotify = SendNotify;
 
         //    ServiceCollection services = (ServiceCollection)new ServiceCollection()
-        //.AddTransient<ISendNotify, REST_API_для_симтемы_управления_конфигурациями.Methods.SendNotify>();
+        //.AddTransient<ISendNotify, REST_API_config_control.Methods.SendNotify>();
 
 
         public static void Main(string[] args)

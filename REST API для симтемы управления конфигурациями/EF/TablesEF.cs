@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace REST_API_для_симтемы_управления_конфигурациями.EF
+namespace REST_API_config_control.EF
 {
     public class ConfigEF
     {

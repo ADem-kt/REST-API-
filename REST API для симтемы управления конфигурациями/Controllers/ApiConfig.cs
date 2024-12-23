@@ -6,9 +6,9 @@ using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.DependencyInjection;
-using REST_API_для_симтемы_управления_конфигурациями.EF;
-using REST_API_для_симтемы_управления_конфигурациями.Interfaces;
-using REST_API_для_симтемы_управления_конфигурациями.Methods;
+using REST_API_config_control.EF;
+using REST_API_config_control.Interfaces;
+using REST_API_config_control.Methods;
 using SignalRApp;
 using System;
 using System.ComponentModel.DataAnnotations;
@@ -16,7 +16,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using System.Text.Json;
 
-namespace REST_API_для_симтемы_управления_конфигурациями.Controllers
+namespace REST_API_config_control.Controllers
 {
     [Table("Config")]
     [ApiController]

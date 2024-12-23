@@ -2,13 +2,13 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using REST_API_для_симтемы_управления_конфигурациями.EF;
+using REST_API_config_control.EF;
 using SignalRApp;
 using System;
 using System.Text;
 using System.Text.Json;
 
-namespace REST_API_для_симтемы_управления_конфигурациями.Controllers
+namespace REST_API_config_control.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

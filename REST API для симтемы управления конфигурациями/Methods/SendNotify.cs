@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.SignalR;
-using REST_API_для_симтемы_управления_конфигурациями.EF;
-using REST_API_для_симтемы_управления_конфигурациями.Interfaces;
+using REST_API_config_control.EF;
+using REST_API_config_control.Interfaces;
 using SignalRApp;
 using System.Collections.Generic;
 using System.Text.Json;
 
-namespace REST_API_для_симтемы_управления_конфигурациями.Methods
+namespace REST_API_config_control.Methods
 {
      public class SendNotify :ISendNotify
     {

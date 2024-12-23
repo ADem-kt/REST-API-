@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.SignalR;
-using REST_API_для_симтемы_управления_конфигурациями.EF;
+using REST_API_config_control.EF;
 using System;
 using System.Security.Claims;
 
