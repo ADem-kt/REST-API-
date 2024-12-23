@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\REST API для симтемы управления конфигурациями\REST API config control.csproj" />
+    <ProjectReference Include="..\REST API config control\REST API config control.csproj" />
   </ItemGroup>
 
   <ItemGroup>

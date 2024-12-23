@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "REST API config control", "REST API config control\REST API config control.csproj", "{44D238D0-29C6-4CC3-A7FE-BE5BC7E2B483}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "REST API для симтемы управления конфигурациями.Tests", "REST API config control.Tests\REST API для симтемы управления конфигурациями.Tests.csproj", "{2BA35530-A13D-4AAD-8F41-435C865B1661}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{44D238D0-29C6-4CC3-A7FE-BE5BC7E2B483}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44D238D0-29C6-4CC3-A7FE-BE5BC7E2B483}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44D238D0-29C6-4CC3-A7FE-BE5BC7E2B483}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44D238D0-29C6-4CC3-A7FE-BE5BC7E2B483}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BA35530-A13D-4AAD-8F41-435C865B1661}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BA35530-A13D-4AAD-8F41-435C865B1661}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BA35530-A13D-4AAD-8F41-435C865B1661}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BA35530-A13D-4AAD-8F41-435C865B1661}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6FF12508-CB87-4742-ABC4-7CC3C20C4F04}
+	EndGlobalSection
+EndGlobal
