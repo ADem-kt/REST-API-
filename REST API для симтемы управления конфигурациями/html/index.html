@@ -2,12 +2,12 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>METANIT.COM</title>
+    <title>Check Updates</title>
 </head>
 <body>
     <h2>Личный кабинет пользователя</h2>
     <p><a href="logout">Выйти</a></p>
-    <div id="userForm">
+    <!--<div id="userForm">
         <p>
             Введите ник:<br />
             <input id="username" type="text" />
@@ -17,7 +17,7 @@
             <input type="text" id="message" />
         </p>
         <input type="button" id="sendBtn" value="Отправить" />
-    </div>
+    </div>-->
 
     <div id="chatroom"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
@@ -27,25 +27,40 @@
             .build();
 
         // отправка сообщения от простого пользователя
-        document.getElementById("sendBtn").addEventListener("click", () => {
-            const message = document.getElementById("message").value;
-            const username = document.getElementById("username").value;
-            hubConnection.invoke("Send", message, username)
-                .catch(error => console.error(error));
-        });
+        //document.getElementById("sendBtn").addEventListener("click", () => {
+        //    const message = document.getElementById("message").value;
+        //    const username = document.getElementById("username").value;
+        //    hubConnection.invoke("Send", message, username)
+        //        .catch(error => console.error(error));
+        //}
+        //);
         // получение сообщения от сервера
-        hubConnection.on("Receive", (message, userName) => {
+        hubConnection.on("Receive", (message) => {
 
             // создаем элемент <b> для имени пользователя
-            const userNameElem = document.createElement("b");
-            userNameElem.textContent = `${userName}: `;
+            //const userNameElem = document.createElement("b");
+            //userNameElem.textContent = `${userName}: `;
 
             // создает элемент <p> для сообщения пользователя
             const elem = document.createElement("p");
-            elem.appendChild(userNameElem);
-            elem.appendChild(document.createTextNode(message));
+            elem.textContent = message;
+            //elem.appendChild(document.createTextNode(dametime + " "));
+            //elem.appendChild(userNameElem);
+            //elem.appendChild(document.createTextNode(message));
 
             var firstElem = document.getElementById("chatroom").firstChild;
+            document.getElementById("chatroom").insertBefore(elem, firstElem);
+
+        });
+        hubConnection.on("Notify", function (message) {
+
+            // добавляет элемент для диагностического сообщения
+            const notifyElem = document.createElement("b");
+            notifyElem.textContent = message;
+            const elem = document.createElement("p");
+            //elem.appendChild(document.createTextNode(dametime + " "));
+            elem.appendChild(notifyElem);
+            const firstElem = document.getElementById("chatroom").firstChild;
             document.getElementById("chatroom").insertBefore(elem, firstElem);
         });
 

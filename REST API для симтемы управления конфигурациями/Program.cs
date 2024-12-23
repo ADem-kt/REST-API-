@@ -3,15 +3,24 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Data.Sqlite;
+using REST_API_для_симтемы_управления_конфигурациями.Interfaces;
 using SignalRApp;
 using System;
 using System.Data;
 using System.Security.Claims;
+using REST_API_для_симтемы_управления_конфигурациями.Methods;
 
 namespace REST_API_для_симтемы_управления_конфигурациями
 {
     public class Program
     {
+        //ISendNotify? SendNotify;
+        //public Program(ISendNotify? SendNotify) => this.SendNotify = SendNotify;
+
+        //    ServiceCollection services = (ServiceCollection)new ServiceCollection()
+        //.AddTransient<ISendNotify, REST_API_для_симтемы_управления_конфигурациями.Methods.SendNotify>();
+
+
         public static void Main(string[] args)
         {
             var adminRole = new Role("admin");
@@ -20,7 +29,7 @@ namespace REST_API_для_симтемы_управления_конфигура
 {
     new Person("tom@gmail.com", "12345", adminRole),
     new Person("bob@gmail.com", "55555", userRole),
-};
+                };
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options => options.LoginPath = "/login");
@@ -99,20 +108,20 @@ namespace REST_API_для_симтемы_управления_конфигура
                 await context.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
                 return Results.Redirect("/login");
             });
-            app.MapPost("/create", async (string mes, IHubContext<ChatHub> hubContext) =>
-            {
-                try
-                {
-                    await hubContext.Clients.All.SendAsync("Receive", $"{mes}");
-                    //return $"Добавили строку в конфиг: date = {DateTime.Now}, version = {version}, config_name = {configName}, key = {key}, value = {value}";
+            //app.MapPost("/create", async (string mes, IHubContext<ChatHub> hubContext) =>
+            //{
+            //    try
+            //    {
+            //        await hubContext.Clients.All.SendAsync("Receive", $"{mes}");
+            //        //return $"Добавили строку в конфиг: date = {DateTime.Now}, version = {version}, config_name = {configName}, key = {key}, value = {value}";
 
-                }
-                catch (Exception ex)
-                {
-                    await hubContext.Clients.All.SendAsync("Receive", $"ERROR: {ex} - {DateTime.Now.ToLongTimeString()}");
-                    //return ex.ToString();
-                }
-            });
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        await hubContext.Clients.All.SendAsync("Receive", $"ERROR: {ex} - {DateTime.Now.ToLongTimeString()}");
+            //        //return ex.ToString();
+            //    }
+            //});
             app.MapHub<ChatHub>("/chat");   // ChatHub будет обрабатывать запросы по пути /chat
             app.MapControllers();
             app.Run();
@@ -126,6 +135,21 @@ namespace REST_API_для_симтемы_управления_конфигура
         }
         record class Person(string Email, string Password, Role Role);
         record class Role(string Name);
+        public static bool authorized(string email, string password) {
+            var adminRole = new Role("admin");
+            var userRole = new Role("user");
+            var people = new List<Person>
+{
+    new Person("tom@gmail.com", "12345", adminRole),
+    new Person("bob@gmail.com", "55555", userRole),
+};          // находим пользователя 
+            Person? person = people.FirstOrDefault(p => p.Email == email && p.Password == password);
+            // если пользователь не найден, отправляем статусный код 401
+            if (person is null) return false;
+            else return true;
+        }
+
+
 
     }
 }
